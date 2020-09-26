@@ -126,13 +126,15 @@ public class AdapterController extends RouteBuilder{
 
                         /* Receive an exception model and set a response message based on the error received. */
                         Exception exc = exchange.getProperty(Exchange.EXCEPTION_CAUGHT, Exception.class);
-                        int responseCode = 0;
                         if(exc instanceof HttpOperationFailedException) {
                             HttpOperationFailedException httpOperationFailedException = (HttpOperationFailedException) exc;
-                            responseCode = httpOperationFailedException.getStatusCode();
+                            int responseCode = httpOperationFailedException.getStatusCode();
+                            exchange.getIn().setBody(exc.getMessage());
+                            exchange.getIn().setHeader(Exchange.HTTP_RESPONSE_CODE, responseCode);
+                        } else {
+                            exchange.getIn().setBody(exc.getMessage());
+                            exchange.getIn().setHeader(Exchange.HTTP_RESPONSE_CODE, 520);
                         }
-                        exchange.getIn().setBody(exc.getMessage());
-                        exchange.getIn().setHeader(Exchange.HTTP_RESPONSE_CODE, responseCode);
                     })
                     .stop()
                     .end()
