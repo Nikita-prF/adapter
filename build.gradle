@@ -1,0 +1,40 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.4.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.apache.camel.springboot:camel-spring-boot-starter:3.5.0'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.apache.camel:camel-http:3.5.0'
+	implementation 'org.apache.camel:camel-jetty:3.5.0'
+	implementation 'org.apache.camel:camel-bean-validator:3.5.0'
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+
+	testCompile group: 'org.apache.camel', name: 'camel-test-spring', version: '3.5.0'
+	testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.3.4.RELEASE'
+	testCompile group: 'org.springframework', name: 'spring-test', version: '5.2.9.RELEASE'
+
+	compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+	compile group: 'org.apache.camel.springboot', name: 'camel-jsonpath-starter', version: '3.5.0'
+	compile group: 'org.apache.camel.springboot', name: 'camel-weather-starter', version: '3.5.0'
+	compile group: 'org.apache.camel.springboot', name: 'camel-jackson-starter', version: '3.5.0'
+
+}
+
+test {
+	useJUnitPlatform()
+}

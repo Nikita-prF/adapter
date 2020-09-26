@@ -1,0 +1,12 @@
+adapter/messages/MsgB.java
+ adapter.messages.MsgB
+adapter/AdapterApplication.java
+ adapter.AdapterApplication
+adapter/controllers/AdapterController.java
+ adapter.controllers.AdapterController
+adapter/messages/MsgA.java
+ adapter.messages.MsgA
+adapter/coordinateValidator/CoordinateValidator.java
+ adapter.coordinateValidator.CoordinateValidator
+adapter/coordinateValidator/CoordinateConstraint.java
+ adapter.coordinateValidator.CoordinateConstraint
